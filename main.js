@@ -111,7 +111,7 @@ app.post("/updateEmail", async (req, res) => {
 
     }), data.signature);
     if (signerAddress.toString() === data.from.toString()) {
-        const tx = await updateGitCoinPoint(data);
+        const tx = await updateUserEmail(data);
         if (tx.success) {
 
             res.status(200).send(tx)
