@@ -75,18 +75,18 @@ async function updateUserEmail(data) {
 
 
 
-function verifyMessageWithEthers(message, signature) {
-    const signerAddress = ethers.verifyMessage(message, signature);
-    return signerAddress;
-}
+// function verifyMessageWithEthers(message, signature) {
+//     const signerAddress = ethers.verifyMessage(message, signature);
+//     return signerAddress;
+// }
 
 app.post("/GitCoinPoint", async (req, res) => {
     const data = req.body;
-    const signerAddress = verifyMessageWithEthers(JSON.stringify({
-        user : data.user,
-        score: data.score,
+    // const signerAddress = verifyMessageWithEthers(JSON.stringify({
+    //     user : data.user,
+    //     score: data.score,
 
-    }), data.signature);
+    // }), data.signature);
   
         const tx = await updateGitCoinPoint(data);
         if (tx.success) {
@@ -102,12 +102,12 @@ app.post("/GitCoinPoint", async (req, res) => {
 
 app.post("/updateEmail", async (req, res) => {
     const data = req.body;
-    const signerAddress = verifyMessageWithEthers(JSON.stringify({
-        user : data.user,
-        email : data.email,
-        isVerified: data.isVerified,
+    // const signerAddress = verifyMessageWithEthers(JSON.stringify({
+    //     user : data.user,
+    //     email : data.email,
+    //     isVerified: data.isVerified,
 
-    }), data.signature);
+    // }), data.signature);
  
         const tx = await updateUserEmail(data);
         if (tx.success) {
