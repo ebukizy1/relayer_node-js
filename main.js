@@ -87,7 +87,7 @@ app.post("/GitCoinPoint", async (req, res) => {
         score: data.score,
 
     }), data.signature);
-    if (signerAddress.toString() === data.from.toString()) {
+  
         const tx = await updateGitCoinPoint(data);
         if (tx.success) {
 
@@ -96,9 +96,7 @@ app.post("/GitCoinPoint", async (req, res) => {
             res.status(500).send(tx)
 
         }
-    } else {
-        res.status(400).send({ success: false, message: "Invalid signature" })
-    }
+   
 })
 
 
@@ -110,7 +108,7 @@ app.post("/updateEmail", async (req, res) => {
         isVerified: data.isVerified,
 
     }), data.signature);
-    if (signerAddress.toString() === data.from.toString()) {
+ 
         const tx = await updateUserEmail(data);
         if (tx.success) {
 
@@ -119,9 +117,7 @@ app.post("/updateEmail", async (req, res) => {
             res.status(500).send(tx)
 
         }
-    } else {
-        res.status(400).send({ success: false, message: "Invalid signature" })
-    }
+    
 })
 
 const server = app;
